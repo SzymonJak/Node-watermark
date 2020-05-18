@@ -1,0 +1,13 @@
+{
+  "name": "Node-watermark",
+  "version": "1.0.0",
+  "description": "node workshop",
+  "main": "app.js",
+  "repository": "git@github.com:SzymonJak/Node-watermark.git",
+  "author": "Szymon Jakubiak <jakubiak.sz@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "inquirer": "6.5.0",
+    "jimp": "0.6.4"
+  }
+}
