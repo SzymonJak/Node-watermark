@@ -15,6 +15,9 @@ const addTextWatermarkToImage = async function(inputFile, outputFile, text) {
     };
     image.print(font, 0, 0, textData, image.getWidth(), image.getHeight());
     await image.quality(100).writeAsync(outputFile);
+
+    console.log('Success! Image marked.');
+    startApp();
   } 
   catch(error) {
     console.log('Sorry, something went wrong...');
@@ -33,6 +36,9 @@ const addImageWatermarkToImage = async function(inputFile, outputFile, watermark
       opacitySource: 0.5,
     });
     await image.quality(100).writeAsync(outputFile);
+
+    console.log('Success! Image marked.');
+    startApp();
   }
   catch(error) {
     console.log('Sorry, something went wrong...');
@@ -77,8 +83,6 @@ const startApp = async () => {
     options.watermarkText = text.value;
     if(fs.existsSync('./img/' + options.inputImage)) {
       addTextWatermarkToImage('./img/' + options.inputImage, './img/' + prepareOutputFilename(options.inputImage), options.watermarkText);
-      console.log('Success! Image marked.');
-      startApp();
     }
     else {
       console.log('Something went wrong... Try again');
@@ -94,8 +98,6 @@ const startApp = async () => {
     options.watermarkImage = image.filename;
     if(fs.existsSync('./img/' + options.inputImage) && fs.existsSync('./img/' + options.watermarkImage)) {
       addImageWatermarkToImage('./img/' + options.inputImage, './img/' + prepareOutputFilename(options.inputImage), './img/' + options.watermarkImage);
-      console.log('Success! Image marked.');
-      startApp();
     } else {
       console.log('Something went wrong... Try again');
     }
